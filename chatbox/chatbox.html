@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../asset/font/fontawesome-free-6.1.2-web/css/all.min.css">
+    <link rel="stylesheet" href="./css/chatbox.css">
+    <title>chatbox</title>
+</head>
+<body>
+    <div class="main">
+        <div class="chatbox-toggle">
+            <i class="chatbox-toggle-icon fa-brands fa-facebook-messenger"></i>
+        </div>
+
+        <div class="chatbox-mess-wrap">
+            <div class="chatbox-header">
+                <div class="chatbox-mess-profile">
+                    <button class="chatbox-mess-btnicon">
+                        <i class="fa-solid fa-biohazard"></i>
+                    </button>
+                <div>
+                <h4 class="chatbox-mess-name"> Hung tran</h4>
+                <p class="chatbox-mess-status">online</p>
+            </div>
+        </div>
+                <div class="chatbox-mess-dropdown">
+                    <i class="chatbox-mess-dropdown-icon fa-solid fa-ellipsis-vertical"></i>
+                    <ul class="mess-dropdown-menu">
+                        <li><a href="" class=""></a>Search</li>
+                        <li><a href="" class=""></a>Report</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chatbox-content">
+                <h4 class="chatbox-nomess">Right now , Don't have mess ~~!</h4>
+                <!-- <div class="chatbox-item send">
+                    <span class="chatbox-item-text">
+                        Hello How arre you Sorry ????
+                    </span>
+                    <span class="chatbox-item-time">8:00</span>
+                </div>
+
+                <div class="chatbox-item receive">
+                    <span class="chatbox-item-text">
+                        Hello How arre you Sorry ????
+                    </span>
+                    <span class="chatbox-item-time">8:00</span>
+                </div> -->
+            </div>
+            <div class="chatbox-mess-bottom">
+                    <form action="" class="chatbox-mess-form">
+                        <textarea name="" id="" cols="30" rows="1" placeholder="Type mess" class="chatbox-mess-input"></textarea>
+                        <button type="submit" class="chatbox-mess-submuit"> <i class="mess-submit-icon fa-solid fa-paper-plane"></i> </button>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+    <script >
+
+        // Lưu và gửi tin nhắn
+        const textarea = document.querySelector('.chatbox-mess-input');
+        const HeightIcon = document.querySelector('.chatbox-mess-submuit')
+        textarea.addEventListener('input' , () => {
+            let line = textarea.value.split('\n').length
+            let heightInput = textarea.clientHeight
+            
+            if (textarea.rows < 6 || line < 6)
+            {
+                textarea.rows = line
+            }
+            if (textarea.rows > 1 )
+            {
+                HeightIcon.style.alignItems ='flex-end';
+            }
+            else
+            {
+                HeightIcon.style.alignItems ='center';
+            }
+            console.log(HeightIcon.style)
+        })
+        // console.log(textarea.clientHeight)
+
+        const messtoggle = document.querySelector('.chatbox-mess-wrap');
+        const chatboxtoggle = document.querySelector('.chatbox-toggle');
+        chatboxtoggle.addEventListener('click' , () => {
+            messtoggle.classList.toggle('show');
+        });
+
+        const dropdownToggle = document.querySelector('.chatbox-mess-dropdown');
+        const MenuToggle = document.querySelector('.mess-dropdown-menu');
+        dropdownToggle.addEventListener('click' , () => {
+            MenuToggle.classList.toggle('show');
+        })
+
+        // Pin ra khỏi cái toggle đó
+        document.addEventListener('click' , (e) => {
+            if (!e.target.matches('.chatbox-mess-dropdown , .chatbox-mess-dropdown *'))
+            {
+                dropdownToggle.classList.remove('show');
+            }
+        })
+
+
+
+        //  Chatbox -  content
+        const ChatBoxForm = document.querySelector('.chatbox-mess-form');
+        const ChatboxContent = document.querySelector('.chatbox-content');
+        const ChatboxNoMess = document.querySelector('.chatbox-nomess');
+        ChatBoxForm.addEventListener('submit' , (e) => {
+            e.preventDefault();
+            if (IsValid(textarea.value))
+            {
+                WritingTexting()
+                setTimeout(AutoReply , 1000);
+            }
+        })
+
+        function addZerro(num)
+        {
+            return num < 10 ? '0' + num : num;
+        }
+
+        function WritingTexting () 
+        {
+            const today = new Date();
+            let mess = ` 
+            <div class="chatbox-item send">
+                    <span class="chatbox-item-text">
+                        ${textarea.value.trim().replace(/\n/g ,'<br>\n' )}
+                    </span>
+                    <span class="chatbox-item-time">${addZerro(today.getHours())} : ${addZerro(today.getMinutes())}</span>
+                </div>
+                `
+                ChatboxContent.insertAdjacentHTML('beforeend' , mess)
+                ChatBoxForm.style.alignItems = 'center';
+                textarea.rows = 1;
+                textarea.focus()
+                textarea.value = ''
+                ChatboxNoMess.style.display = 'none';
+                ScrollBottom();
+        }
+
+        function AutoReply()
+        {
+            const today = new Date();
+            let mess = ` 
+            <div class="chatbox-item receive">
+                    <span class="chatbox-item-text">
+                        Thank you for your answer and the awesome support 
+                    </span>
+                    <span class="chatbox-item-time">${addZerro(today.getHours())} : ${addZerro(today.getMinutes())}</span>
+                </div>
+                `
+                ChatboxContent.insertAdjacentHTML('beforeend' , mess)
+                ChatBoxForm.style.alignItems = 'center';
+                textarea.rows = 1;
+                textarea.focus()
+                textarea.value = ''
+                ChatboxNoMess.style.display = 'none';
+                ScrollBottom()
+        }
+
+        function ScrollBottom ()
+        {
+            messtoggle.scrollTo(0 , messtoggle.scrollHeight)
+        }
+
+        function IsValid (value)
+        {
+            let text  = value.replace(/\n/g , '');
+            text = text.replace(/\n/g , '');
+
+            return text.length > 0 ;
+
+        }
+
+    </script>
+</body>
+</html>

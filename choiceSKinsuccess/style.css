@@ -1,0 +1,125 @@
+.main_choice_success {
+    width: 100%;
+    height: 100%;
+    background:-webkit-linear-gradient(bottom right , transparent , #0900ff8f);
+    text-align: center;
+    height: 730px;
+    top: 0;
+    left: 0;
+    position: fixed;
+    overflow: hidden;
+    display: none;
+}
+
+.choice_success_box {
+    /* height: 400px; */
+    width: 100%;
+    /* background: aqua; */
+    width: 50%;
+    max-width: 800px; 
+    margin: auto;
+    display: block;
+    margin-top: 165px;
+    overflow: hidden;
+    animation: YTopBottom ease-in-out .7s;
+    will-change: YTopBottom;
+}
+@keyframes YTopBottom {
+    from {
+        opacity: 0;
+        transform: translate3d(200px ,100px , 200px);
+    } to {
+        opacity: 1;
+        transform: translate3d(0 , 0 , 0);
+    }
+}
+
+.success_box_heading {
+    padding: 30px;
+    font-size: 26px;
+    color: springgreen;
+    letter-spacing: 4px;
+    text-shadow: 4px 7px 4px red;
+    text-transform: uppercase;
+    background: -webkit-radial-gradient(top right , #001bff , #ff0057);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.choice_success_container {
+    width: 100%;
+    height: 100%;
+}
+.success_container_main {
+    padding: 40px;
+    background: white;
+    border: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    color: black;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 500;
+    /* padding: 0 4px; */
+}
+.success_container_footer {
+    overflow: hidden;
+    float: right;
+    width: 100%;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 100;
+    color: #00000082;
+    /* padding: x; */
+    border-bottom-left-radius: 10px;
+    background: #ebebeb;
+    border-bottom-right-radius: 10px;
+}
+
+.success_box_wrapicon {
+    height: 30px;
+    width: 30px;
+    color: #010080f0; 
+    
+  color: #10bccf;  
+    position: absolute;
+    margin-left: 6px;
+}
+.box-wrapicon-icon {
+
+}
+
+.container_main_texting {
+    padding: 8px 0;
+}
+
+.container_footer_texting{
+        float: right;
+        text-align: left;
+}
+.container_footer_hotline{
+    display: block;
+    margin-right: 40px;
+}
+
+
+
+/* Button Close  */
+.btn-modal-close {
+    position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #10bccf;
+  font-size: 50px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-modal-close:hover ,
+.btn-modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}

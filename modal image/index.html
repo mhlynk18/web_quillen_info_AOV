@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>  
+    <img src="../asset/img/ari-caheo.png" alt="ari" class="img-content" id="img-content" style= "width: 100%">
+    <!-- Modal image -->
+
+    <div class="modal-image" id="modal-image">
+        <!-- close button -->
+        <span class="btn-modal-close">&times;</span>
+
+        <!-- Show image center screen -->
+        <img class="img-show" id="img-show">
+
+        <!-- Show text attach image -->
+        <div class="modal-caption-text" id="modal-caption-text"></div>
+    </div>
+
+    <script>
+        var ImgContent = document.getElementById('img-content');
+
+        var ModalImage = document.getElementById('modal-image');
+        var ImgShow = document.getElementById('img-show');
+        var ModalCaptionText = document.getElementById('modal-caption-text');
+
+        ImgContent.onclick = function()  {
+            ModalImage.style.display = 'block';
+            ImgShow.src = this.src;
+            ModalCaptionText.innerHTML = this.alt;
+        }
+        var CloseButton = document.querySelector('.btn-modal-close'); 
+
+        CloseButton.onclick = function() {
+            ModalImage.style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>

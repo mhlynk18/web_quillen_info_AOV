@@ -1,0 +1,267 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+
+.main {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+.chatbox-toggle  {
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    background: -webkit-linear-gradient(left top , #4342b9ba , #d95454d9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+/* .chatbox-toggle:hover {
+    opacity: .5;
+    transform: rotate3d(1, 1, 1, 70deg);
+} */
+.chatbox-toggle:active {
+    transform: scale(.9);
+}
+.chatbox-toggle-icon {
+    
+}
+
+.chatbox-mess-wrap {
+    position: absolute;
+    bottom: calc(100% + 1rem);
+    right: 0;
+    width: 420px;
+    /* width: 100%; */
+    overflow: hidden;
+    border-radius: 4px;
+    transform: scale(0);
+    transform-origin: bottom right ;
+    transition: .2s;
+}
+.chatbox-mess-wrap.show {
+    transform: scale(1);
+}
+.chatbox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(199, 164, 120);
+    padding: 12px;
+    padding-left: 2rem;
+  
+}
+.chatbox-mess-profile {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+
+}
+.chatbox-mess-btnicon {
+    border-radius: 50%;
+    font-size: 30px;
+    margin-right: 12px;
+}
+.chatbox-mess-name {
+    line-height: 1.4rem;
+}
+.chatbox-mess-status {
+    font-size: 16px;
+    color: rgb(11, 141, 255);
+}   
+.chatbox-mess-dropdown {
+    position: relative;
+}
+.chatbox-mess-dropdown-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.chatbox-mess-dropdown-icon:hover {
+    background-color: brown;
+}
+.chatbox-mess-dropdown:hover .mess-dropdown-menu {
+    display: block;
+}
+.mess-dropdown-menu {
+    list-style: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: rgb(98, 248, 4);
+    width: 120px;
+    height: 64px    ;
+    border-radius: 6px;
+    margin-right: 14px;
+    display: none;
+    transform: scale(0);
+    transform-origin: top right ;
+    transition: .2s;
+
+}
+.mess-dropdown-menu.show {
+    transform: scale(1);
+}
+.mess-dropdown-menu::after { 
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    /* background-color: brown; */
+    width: 100%;
+    height: 20px;
+}
+.mess-dropdown-menu li {
+    margin: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    line-height: 2rem;
+    /* margin-left: 0; */
+    margin: 0;
+    text-decoration: none;
+    border-radius: 4px;
+
+}
+.mess-dropdown-menu li:hover{
+    background-color: rgb(213 248 4);
+    cursor: pointer;
+}
+.mess-dropdown-menu li a{
+    
+}
+.chatbox-content {
+    background-color: #eee5e5;
+    padding: 1.5rem;
+    flex-direction: column;
+    display: flex;
+
+    max-height:350px;
+    overflow-y:auto;
+    /* max-width: 200px; */
+    overflow-x: hidden;
+    
+}
+.chatbox-item {
+    width: 90%;
+    padding: 1.8rem;
+    margin: 12px;
+    /* overflow: hidden; */
+}
+ .send {
+    align-self: flex-start;
+    background-color: #0000ffb8;
+    color: aliceblue;
+    border-radius: 6px;
+    padding-bottom: 14px;
+}
+ .receive {
+    border-radius: 6px;
+    align-self: flex-end;
+    background-color: bisque;
+    color: rgb(40, 39, 39);
+    padding-bottom: 14px;
+}
+.chatbox-item-text {
+    /* line-height: 14px; */
+}
+.chatbox-item-time {
+    font-size: 14px;
+    display: inline-block;
+    float: right;
+    margin-top: 24px;
+}
+.chatbox-item-text {
+
+}
+.chatbox-item-time {
+
+}
+.chatbox-mess-bottom {
+    background-color: blueviolet;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 18px;
+}
+.chatbox-mess-form {
+    /* float: left; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px;
+}
+.chatbox-mess-input {
+    padding: 10px 12px;
+    padding-top: 9px;
+    width: 80%;
+    border: transparent;
+    outline: none;
+    border: none;
+    resize: none;
+    scrollbar-width: none;  
+}   
+.chatbox-mess-submuit {
+    border: none;
+    outline: none;
+    font-size: 20px;
+    background-color: white;
+    padding: 6px 12px;
+    padding-bottom: 5px;
+
+    cursor: pointer;
+}
+
+.chatbox-mess-input::-webkit-scrollbar {
+    display: none;
+}
+
+.mess-submit-icon {
+    /* line-height: 12px; */
+}
+.mess-submit-icon:active {
+    transform: scale(.7);
+}
+.chatbox-nomess {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    color: green;
+}
+
+
+
+/* Mobile */
+
+@media screen and (max-width :625px) {
+    .chatbox-mess-wrap  {
+        width: calc(100vw - 2rem);
+    }
+
+    .main {
+        right: 1rem;
+        bottom: 1rem;
+    }
+
+
+}
